@@ -34,6 +34,29 @@
             $this->set($d);
             $this->render("index");
         }
+        public function search()
+        {
+             /*require(ROOT . 'Models/Task.php');*/
+            extract($_POST);
+            $category = new CategoryModel();
+            $land = new LandModel();
+            
+            $land->tendat = $tendat;
+            $land->loai = $loai;
+            $land->thanhpho = $thanhpho;
+            $land->idloai = $idloai;
+            $land->dientich = $dientich;
+            $land->gia = $gia;
+            
+            $d['category'] = $this->repoCate->getAll($category);
+
+            $d['city'] = $this->reso->getCity();
+
+            $d['lands'] = $this->repoLand->findByKey($land);
+            
+            $this->set($d);
+            $this->render("search_land");
+        }
     }
 
 ?>

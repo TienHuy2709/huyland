@@ -45,6 +45,10 @@
 			return $this->landRe->allif($model,$if);
 		}
 
+		public function findByKey($model){
+			return $this->landRe->findLand($model);
+		}
+
 	}
 
  ?>

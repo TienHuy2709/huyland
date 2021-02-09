@@ -55,7 +55,20 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item <?php if($this->request->controller=='home') echo 'active'; ?>"><a href="<?php echo WEBROOT; ?>home/index/" class="nav-link">Trang chủ</a></li>
-					<li class="nav-item <?php if($this->request->controller=='category') echo 'active'; ?>"><a href="<?php echo WEBROOT; ?>category/index/" class="nav-link">Thể Loại</a></li>
+					<li class="nav-item dropdown <?php if($this->request->controller=='category') echo 'active'; ?>"><a class="dropdown-toggle nav-link" data-toggle="dropdown" href="<?php echo WEBROOT; ?>category/index/">Thể Loại <b class="caret"></b></a>
+						<ul class="dropdown-menu multi-column columns-1"> 
+							<div class="row"> 
+								<div class="col-sm-12"> 
+									<ul class="multi-column-dropdown"> 
+										<?php foreach ($category as $cate): ?>
+										<li><a href="<?php echo WEBROOT; ?>category/allId/<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></a>
+										</li> 
+										<?php endforeach; ?>
+									</ul> 
+								
+							</div> 
+						</ul> 
+					</li>
 					<li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
 					<li class="nav-item"><a href="about.html" class="nav-link">Giới Thiệu</a></li>
 					<li class="nav-item"><a href="blog.html" class="nav-link">Tin Tức</a></li>

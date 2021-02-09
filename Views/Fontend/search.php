@@ -3,14 +3,14 @@
 			<div class="row">
 				<div class="col-md-12 search-wrap">
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Search Property</h2>
-					<form action="#" class="search-property">
+					<form action="<?php echo WEBROOT; ?>home/search/" method="post" class="search-property">
 						<div class="row">
 							<div class="col-md align-items-end">
 								<div class="form-group">
 									<label for="#">Từ khoá</label>
 									<div class="form-field">
 										<div class="icon"><span class="icon-pencil"></span></div>
-										<input type="text" class="form-control" placeholder="Keyword">
+										<input type="text" name="tendat" id="tendat" class="form-control" placeholder="Keyword">
 									</div>
 								</div>
 							</div>
@@ -20,9 +20,10 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value=""> Đất thuê </option>
-												<option value=""> Đất bán </option>
+											<select name="loai" id="" class="form-control">
+												<option value=""> </option>
+												<option value="0"> Đất thuê </option>
+												<option value="1"> Đất bán </option>
 											</select>
 										</div>
 									</div>
@@ -34,7 +35,8 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
+											<select name="thanhpho" id="" class="form-control">
+												<option value=""></option>
 												<?php foreach ($city as $ci): ?>
 												<option value="<?php echo $ci->thanhpho ?>"><?php echo $ci->thanhpho ?></option>
 												<?php endforeach; ?>
@@ -49,7 +51,8 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
+											<select name="idloai" id="" class="form-control">
+												<option value=""></option>
 												<?php foreach ($category as $cate): ?>
 												<option value="<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></option>
 												<?php endforeach; ?>
@@ -64,13 +67,14 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value=""> nhỏ hơn 10 </option>
-												<option value="">10 - 20</option>
-												<option value="">20 - 30</option>
-												<option value="">30 - 40</option>
-												<option value="">40 - 50</option>
-												<option value=""> lớn hơn 50 </option>
+											<select name="dientich" id="" class="form-control">
+												<option value=""></option>
+												<option value="<= 10"> nhỏ hơn 10 </option>
+												<option value="BETWEEN 10 AND 20">10 - 20</option>
+												<option value="BETWEEN 20 AND 30">20 - 30</option>
+												<option value="BETWEEN 30 AND 40">30 - 40</option>
+												<option value="BETWEEN 40 AND 50">40 - 50</option>
+												<option value=">=50"> lớn hơn 50 </option>
 											</select>
 										</div>
 									</div>
@@ -82,13 +86,14 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value=""> nhỏ hơn 1 </option>
-												<option value="">1 - 5</option>
-												<option value="">5 - 10</option>
-												<option value="">10 - 15</option>
-												<option value="">15 - 20</option>
-												<option value=""> lớn hơn 20 </option>
+											<select name="gia" id="" class="form-control">
+												<option value=""></option>
+												<option value="<=1"> nhỏ hơn 1 </option>
+												<option value="BETWEEN 1 AND 5">1 - 5</option>
+												<option value="BETWEEN 5 AND 10">5 - 10</option>
+												<option value="BETWEEN 10 AND 15">10 - 15</option>
+												<option value="BETWEEN 15 AND 20">15 - 20</option>
+												<option value=">=20"> lớn hơn 20 </option>
 											</select>
 										</div>
 									</div>

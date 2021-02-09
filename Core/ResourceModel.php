@@ -110,6 +110,36 @@
 			return $req->fetchObject();
 		}
 
+		public function findLand($model)
+		{	
+			$ten =  $model->tendat;
+			if ($model->tendat!= '' && $model->loai=='' && $model->thanhpho=='' && $model->idloai=='' && $model->dientich=='' && $model->gia=='') 
+			{
+				
+				$sql = "SELECT * FROM {$this->table} where tendat LIKE '%$ten%' ";
+				$req = Database::getBdd()->prepare($sql);
+				$req->execute();
+			}
+
+			else
+			{
+				$loai=$model->loai;
+				$thanhpho=$model->thanhpho;
+				$loaidat=$model->idloai;
+				$dientich=$model->dientich;
+				$gia=$model->gia;
+				$sql = "SELECT * FROM {$this->table} where tendat LIKE LOWER('%$ten%') and loai=$loai and thanhpho='$thanhpho' and idloai=$loaidat and dientich $dientich and gia $gia";
+				$req = Database::getBdd()->prepare($sql);
+				$req->execute();
+				$_GET['loai']=$loai;
+			}
+
+
+			echo $sql;
+
+			return $req->fetchAll(PDO::FETCH_OBJ);
+		}
+
 		public function getCity(){
 
 			$sql = "SELECT thanhpho FROM dat";
