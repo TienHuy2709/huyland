@@ -121,6 +121,14 @@
 				$req->execute();
 			}
 
+			elseif($model->tendat == ''){
+				$sql = "SELECT * FROM {$this->table}";
+				$req = Database::getBdd()->prepare($sql);
+				$req->execute();
+
+				
+			}
+
 			else
 			{
 				$loai=$model->loai;
@@ -136,7 +144,6 @@
 
 
 			echo $sql;
-
 			return $req->fetchAll(PDO::FETCH_OBJ);
 		}
 

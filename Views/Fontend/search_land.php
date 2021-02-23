@@ -1,4 +1,7 @@
     <?php require(ROOT . "Views/Fontend/header.php"); ?>
+    <div class="kq">
+        <p>Kết quả tìm kiếm : <span><?php echo count($lands); ?></span></p>
+    </div>
     <section class="ftco-section bg-light">
     	<div class="container">
     		<div class="row">

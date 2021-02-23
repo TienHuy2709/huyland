@@ -25,7 +25,19 @@
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/flaticon.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/icomoon.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/style.css">
-
+	<style type="text/css" media="screen">
+		.kq{
+			text-align: center;
+			margin-top: 1rem;
+			font-size: 24px;
+			color: red;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		.kq span{
+			color: #615e5e;
+		}
+	</style>
 </head>
 <body>
 	<div class="top">
