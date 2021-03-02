@@ -60,7 +60,7 @@
 								<?php 
 									$anh = explode(",", $hot->hinhanh);
 								 ?>
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/products/<?php echo $hot->id; ?>/<?php echo $anh[0]; ?>);">
+								<a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/products/<?php echo $hot->id; ?>/<?php echo $anh[0]; ?>);">
 									<div class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
 									</div>
@@ -69,7 +69,7 @@
 									<span class="status sale">Hot</span>
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="#" title="<?php echo $hot->tendat ?>"><?php echo $hot->tendat ?></a></h3>
+											<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>" title="<?php echo $hot->tendat ?>"><?php echo $hot->tendat ?></a></h3>
 											<p><?php echo $hot->thanhpho ?></p>
 										</div>
 										<div class="two">

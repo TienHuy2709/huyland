@@ -14,12 +14,12 @@
         private $repoCate;
         private $repoLand;
         private $reso;
-        
         public function __construct()
         {
             $this->repoCate = new CategoryRepository();
             $this->repoLand = new LandRepository();
             $this->reso = new ResourceModel();
+            $_COOKIE["dat"] = array();
         }
         public function index()
         {
@@ -57,6 +57,59 @@
             $this->set($d);
             $this->render("search_land");
         }
+
+        public function addHeart($id){
+            $land = $this->repoLand->findName($id);
+            $land = array("id"=>$id,"tendat"=>$land->tendat);
+            
+            setcookie('dat_'.$id, serialize($land), time() + (86400 * 7), "/"); // 86400 = 
+            
+        }
+
+        public function deleteHeart(){
+            $id = isset($_POST["id"]) ? $_POST["id"] : "";
+            setcookie('dat_'.$id, "", time() - (86400 * 7), "/"); // 86400 = 
+            
+        }
+
+        public function listCookie(){
+
+            $data = array();
+            for($i =1;$i<10;$i++){
+                if(isset($_COOKIE['dat_'.$i])){
+                    $data[$i] = unserialize($_COOKIE['dat_'.$i], ["allowed_classes" => false]);
+                }
+            }
+            $output= '';
+            $id_delete ='';
+            foreach ($data as $key => $value) {
+                foreach ($value as $key1=>$value1) {
+                    if($key1=="id"){
+                        $output .= "<li><div style='width: 83%; float:left'><a href=".WEBROOT."detailland/index/".$value1." ><p>";
+                        $id_delete =$value1;
+                    }
+                    if($key1=="tendat"){
+                       $output .= $value1."</p></a>";
+                       $output .= "</div>
+                       <button class='btn btn-outline-danger btn-sm deleteCookie' style='max-width: 13%; float:left; text-align: center'  data-id_delete ='$id_delete'><i class='oi oi-circle-x'></i></button></li> ";
+                       $output .= "";
+                    }
+                    // if($key1=="id") echo "id_dat :".$value1."<br>";
+                    //  if($key1=="tendat") echo "ten_dat :".$value1."<br>";
+                }
+            }
+            echo $output;                           
+        }
+
+         public function countCookie(){
+            $count = 0;
+             for($i =1;$i<10;$i++){
+                if(isset($_COOKIE['dat_'.$i])){
+                    $count ++;
+                }
+            }
+            echo $count;
+         }
     }
 
 ?>

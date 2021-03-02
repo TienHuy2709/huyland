@@ -14,7 +14,19 @@
           				</div>
           				<?php endforeach; ?>
           			</div>
+
+                <button id="addCookie"
+                <?php if(isset($_COOKIE["dat_".$detail->id])){
+                  echo "class='btn-danger btn btn-lg icon-heart' ";
+                  echo "title='Đã yêu thích'";
+                }  
+                else{
+                  echo "class='btn-outline-info btn btn-lg icon-heart' ";
+                  echo "title='yêu thích'" ;
+                } ?> ></button>
+
           		</div>
+
           		<div class="col-md-12 Properties-single mt-4 mb-5 ftco-animate">
           			<h2><?php echo $detail->tendat; ?></h2>
           			<p class="rate mb-4">

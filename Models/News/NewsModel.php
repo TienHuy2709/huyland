@@ -1,14 +1,17 @@
 <?php 
 
-	namespace HUYLAND\Models\Category;
+	namespace HUYLAND\Models\News;
 	
 	use HUYLAND\Core\Model;
-
-	class CategoryModel extends Model 
+	
+	class NewsModel extends Model 
 	{
 		protected $id;
-		protected $tenloai;
-		protected $trangthai;
+		protected $hinhanh;
+		protected $ten;
+		protected $noidung;
+		protected $ngaydang;
+		protected $luotxem;
 
 		public function __set($name, $value)
 		{

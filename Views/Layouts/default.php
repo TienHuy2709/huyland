@@ -52,14 +52,14 @@
 					</p>
 				</div>
 				<div class="col d-flex justify-content-end">
-					<p class="num"><span class="icon-phone"></span> + 1700 12345 6789</p>
+					<p class="num"><span class="icon-phone"></span> 0981519920</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">HUY<span>LAND</span></a>
+			<a class="navbar-brand" href="<?php echo WEBROOT; ?>home/index/">HUY<span>LAND</span></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -81,12 +81,39 @@
 							</div> 
 						</ul> 
 					</li>
-					<li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">Giới Thiệu</a></li>
-					<li class="nav-item"><a href="blog.html" class="nav-link">Tin Tức</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-					<li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
-					<li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Sign-Up</a></li>
+					<li class="nav-item <?php if($this->request->controller=='about') echo 'active'; ?> "><a href="<?php echo WEBROOT; ?>about/index/" class="nav-link">Giới Thiệu</a></li>
+					<li class="nav-item <?php if($this->request->controller=='news') echo 'active'; ?> "><a href="<?php echo WEBROOT; ?>news/list/" class="nav-link">Tin Tức</a></li>
+					<li class="nav-item <?php if($this->request->controller=='contact') echo 'active'; ?> "><a href="<?php echo WEBROOT; ?>contact/index/" class="nav-link">Liên Hệ</a></li>
+					<li class="nav-item cta dropdown"><a href="contact.html" class="dropdown-toggle nav-link ml-lg-2" data-toggle="dropdown"><span class="icon-heart"></span> Yêu thích (<span id="countCookie"></span>)</a>
+						<ul class="dropdown-menu multi-column columns-1"> 
+							<div class="row"> 
+								<div class="col-sm-12"> 
+									<ul class="multi-column-dropdown" id="listCookie"> 
+
+									</ul> 
+							</div> 
+						</ul> 
+					</li>
+					<li class="nav-item cta cta-colored"><a href="<?php echo WEBROOT ?>contact/index/" class="nav-link"><span class="icon-pencil"></span> Đăng tin</a></li>
+					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>contact/index/" class="nav-link"><span class="icon-log-in-outline"></span> Đăng nhập</a></li>
+					<style type="text/css" media="screen">
+						.cta ul{
+							max-width: 100%;
+							min-width: 240px;
+						}
+						.cta ul li a p{
+							font-size: 13px;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							line-height: inherit;
+							-webkit-line-clamp: 2;
+							display: -webkit-box;
+							-webkit-box-orient: vertical;
+						}
+						.ftco-navbar-light .navbar-nav > .nav-item.cta-log > a{
+							background: #d60860;
+						}
+					</style>
 
 				</ul>
 			</div>
@@ -161,9 +188,9 @@
 						<h2 class="ftco-heading-2">Have a Questions?</h2>
 						<div class="block-23 mb-3">
 							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+								<li><span class="icon icon-map-marker"></span><span class="text">Đại Học Công Nghiệp Hà Nội - Bắc Từ Liêm</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span class="text"> 0981519920</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">fbkhongco@gmail.com</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -203,6 +230,93 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 		<script src="<?php echo WEBROOT; ?>/asset/js/google-map.js"></script>
 		<script src="<?php echo WEBROOT; ?>/asset/js/main.js"></script>
+		<script  type="text/javascript" >
+			$( document ).ready(function() {
+					function load(){
+							$.ajax({
+							url : "<?php echo WEBROOT."home/listCookie" ?>",
+							type : "post",
+							dataType : "text",
+							data : {},
+							success : function(resule){
+								$("#listCookie").html(resule);
+							//Load lại trang theo thời gian cho phép
+							/*setInterval(function(){
+								window.location.reload();
+							},100);*/
+						},
+						errorr: function(){
+							$("#listCookie").html("Không có mảnh đất nào");
+						}
+					});
+							$.ajax({
+							url : "<?php echo WEBROOT."home/countCookie" ?>",
+							type : "post",
+							dataType : "text",
+							data : {},
+							success : function(resule){
+								$("#countCookie").html(resule);
+							//Load lại trang theo thời gian cho phép
+							/*setInterval(function(){
+								window.location.reload();
+							},100);*/
+						},
+						errorr: function(){
+							$("#countCookie").html("0");
+						}
+					})
+				}
+				
+					load();
+					
 
+				$(document).on('click','.deleteCookie',function(){
+					var id_dat = $(this).data('id_delete'); 
+					$.ajax({
+						url : "<?php echo WEBROOT."home/deleteHeart/"; ?>",
+						type : "post",
+						dataType : "text",
+						data : {
+							id : id_dat,
+						},
+						success : function(resule){
+
+							alert("Đã xoá khỏi danh sách yêu thích");
+							load();
+							count();
+						},
+						errorr: function(){
+							alert('Xoá không thành công');
+						}
+					});
+				});
+
+				<?php if($this->request->controller=='detailland'): ?>
+				$("#addCookie").on('click',function(){
+					$.ajax({
+						url : "<?php echo WEBROOT."home/addHeart/".$detail->id; ?>",
+						type : "post",
+						dataType : "text",
+						data : {},
+						success : function(resule){
+							 //$("#displayUser").html(resule);
+							//Load lại trang theo thời gian cho phép
+							/*setInterval(function(){
+								window.location.reload();
+							},100);*/
+							alert("Đã thêm vào danh sách yêu thích");
+							load();
+							count();
+						},
+						errorr: function(){
+							alert('thêm không thành công');
+							
+						}
+						
+					});
+				});
+			<?php endif; ?>
+			})
+		</script>
 	</body>
 	</html>

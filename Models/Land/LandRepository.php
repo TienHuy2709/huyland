@@ -49,6 +49,10 @@
 			return $this->landRe->findLand($model);
 		}
 
+		public function findName($id){
+			return $this->landRe->getName($id);
+		}
+
 	}
 
  ?>

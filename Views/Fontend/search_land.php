@@ -1,4 +1,5 @@
     <?php require(ROOT . "Views/Fontend/header.php"); ?>
+    <?php require(ROOT . "Views/Fontend/search.php"); ?>
     <div class="kq">
         <p>Kết quả tìm kiếm : <span><?php echo count($lands); ?></span></p>
     </div>

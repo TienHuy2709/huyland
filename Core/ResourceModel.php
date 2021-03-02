@@ -23,17 +23,17 @@
 
 			$properties = $model->getProperties();
 
-			$checkId = $model->getId();
+			$checkId = $model->id;
 /*			$properties['created_at'] = date('Y-m-d H:i:s');
 			$properties['updated_at'] = date('Y-m-d H:i:s');*/
 
 			if($checkId == null )
 			{
 				unset($properties['id']);
-
 				$values = implode(', ',array_keys($properties));
 				$column = implode(', :',array_keys($properties));
-				$sql = "INSERT INTO {$this->table} (".$values.") VALUES ( :".$column.")";	
+				$sql = "INSERT INTO {$this->table} (".$values.") VALUES ( :".$column.")";
+
 				$req = Database::getBdd()->prepare($sql);
 
 				return $req->execute($properties);
@@ -112,7 +112,7 @@
 
 		public function findLand($model)
 		{	
-			$ten =  $model->tendat;
+			$ten = $model->tendat;
 			if ($model->tendat!= '' && $model->loai=='' && $model->thanhpho=='' && $model->idloai=='' && $model->dientich=='' && $model->gia=='') 
 			{
 				
@@ -121,12 +121,10 @@
 				$req->execute();
 			}
 
-			elseif($model->tendat == ''){
+			elseif($model->tendat == '' && $model->loai=='' && $model->thanhpho=='' && $model->idloai=='' && $model->dientich=='' && $model->gia==''){
 				$sql = "SELECT * FROM {$this->table}";
 				$req = Database::getBdd()->prepare($sql);
-				$req->execute();
-
-				
+				$req->execute();	
 			}
 
 			else
@@ -142,8 +140,6 @@
 				$_GET['loai']=$loai;
 			}
 
-
-			echo $sql;
 			return $req->fetchAll(PDO::FETCH_OBJ);
 		}
 
@@ -168,6 +164,15 @@
 			$req->execute();
 
 			return $req->fetchAll(PDO::FETCH_OBJ);
+		}
+
+		public function getName($id)
+		{
+			$sql = "SELECT tendat FROM {$this->table} where id =:id";
+			$req = Database::getBdd()->prepare($sql);
+			$req->execute([':id' => $id]);
+			
+			return $req->fetchObject();
 		}
 
 	}

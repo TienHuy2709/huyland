@@ -40,7 +40,8 @@
             {
 
                 if($this->request->admin=="admin"){
-                    require(ROOT . "Views/Layouts1/" . $this->layout . '.php');
+                    require(ROOT . "Views/Layouts/" . $this->layout.'Admin'. '.php');
+                    //echo ROOT . "Views/Layouts/" . $this->layout.'Admin'. '.php';
 
                 }
                 else require(ROOT . "Views/Layouts/" . $this->layout . '.php');

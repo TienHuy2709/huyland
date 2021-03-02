@@ -1,14 +1,16 @@
 <?php 
 
-	namespace HUYLAND\Models\Category;
+	namespace HUYLAND\Models\Contact;
 	
 	use HUYLAND\Core\Model;
-
-	class CategoryModel extends Model 
+	
+	class ContactModel extends Model 
 	{
 		protected $id;
-		protected $tenloai;
-		protected $trangthai;
+		protected $ten;
+		protected $email;
+		protected $noidung;
+
 
 		public function __set($name, $value)
 		{
