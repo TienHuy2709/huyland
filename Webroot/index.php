@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use HUYLAND\Dispatcher;
 
-
+session_start();
 /*require(ROOT . 'Config/core.php');
 
 require(ROOT . 'router.php');

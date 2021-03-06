@@ -32,7 +32,6 @@
             $controllerName = $name . "Controller";
             if($this->request->admin=="admin"){
             	$file = 'HUYLAND\\Controllers\\Admin\\'. $controllerName;
-            	echo $file;
             }
             else $file = 'HUYLAND\\Controllers\\'. $controllerName;
             $controller = new $file();

@@ -14,6 +14,7 @@
         private $repoCate;
         private $repoLand;
         private $reso;
+        
         public function __construct()
         {
             $this->repoCate = new CategoryRepository();
@@ -47,7 +48,7 @@
             $land->idloai = $idloai;
             $land->dientich = $dientich;
             $land->gia = $gia;
-            
+
             $d['category'] = $this->repoCate->getAll($category);
 
             $d['city'] = $this->reso->getCity();

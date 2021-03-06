@@ -18,10 +18,15 @@
 			$this->model = $model;
 		}
 
+		public function getNewID(){
+			return $req = Database::getBdd()->lastInsertId();
+		}
+
 		public function save($model)
 		{
 
 			$properties = $model->getProperties();
+
 
 			$checkId = $model->id;
 /*			$properties['created_at'] = date('Y-m-d H:i:s');
@@ -174,6 +179,25 @@
 			
 			return $req->fetchObject();
 		}
+
+		public function log($model)
+		{
+			$email = $model->email;
+			$matkhau = $model->matkhau;
+			$sql = "SELECT * FROM {$this->table} where email =:email and matkhau =:matkhau";
+			$req = Database::getBdd()->prepare($sql);
+			 $req->execute([':email' => $email, ':matkhau' => $matkhau]);
+			
+			 return $req->fetchObject();
+		}
+
+		public function uploadAnh($filename, $id)
+		{
+			$sql = "UPDATE dat set hinhanh =:hinhanh where id =:id";
+			$req = Database::getBdd()->prepare($sql);
+			return $req->execute([':hinhanh' => $filename, ':id' => $id]);
+		}
+
 
 	}
 

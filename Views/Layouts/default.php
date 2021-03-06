@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/flaticon.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/icomoon.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/style.css">
+	<script src="<?php echo WEBROOT; ?>/asset/ckeditor/ckeditor.js" type="text/javascript" charset="utf-8" ></script>
 	<style type="text/css" media="screen">
 		.kq{
 			text-align: center;
@@ -73,8 +74,10 @@
 								<div class="col-sm-12"> 
 									<ul class="multi-column-dropdown"> 
 										<?php foreach ($category as $cate): ?>
-										<li><a href="<?php echo WEBROOT; ?>category/allId/<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></a>
-										</li> 
+											<?php if($cate->trangthai==1): ?>
+												<li><a href="<?php echo WEBROOT; ?>category/allId/<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></a>
+												</li> 
+											<?php endif; ?>
 										<?php endforeach; ?>
 									</ul> 
 								
@@ -94,8 +97,12 @@
 							</div> 
 						</ul> 
 					</li>
-					<li class="nav-item cta cta-colored"><a href="<?php echo WEBROOT ?>contact/index/" class="nav-link"><span class="icon-pencil"></span> Đăng tin</a></li>
-					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>contact/index/" class="nav-link"><span class="icon-log-in-outline"></span> Đăng nhập</a></li>
+					<li class="nav-item cta cta-colored"><a href="<?php echo WEBROOT ?>user/createLand/" class="nav-link"><span class="icon-pencil"></span> Đăng tin</a></li>
+					<?php if(!isset($_SESSION["id_user"])): ?>
+					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>user/login/" class="nav-link"><span class="icon-log-in-outline"></span> Đăng nhập</a></li>
+					<?php else: ?>
+					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>user/logout/" class="nav-link" onclick="return window.confirm('Bạn có chắc chắn muốn đăng xuất');"><span class="icon-log-in-outline"></span> Đăng xuất</a></li>
+					<?php endif; ?>
 					<style type="text/css" media="screen">
 						.cta ul{
 							max-width: 100%;

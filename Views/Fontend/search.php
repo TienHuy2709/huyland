@@ -54,7 +54,9 @@
 											<select name="idloai" id="" class="form-control">
 												<option value=""></option>
 												<?php foreach ($category as $cate): ?>
-												<option value="<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></option>
+													<?php if($cate->trangthai==1): ?>
+														<option value="<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></option>
+													<?php endif ?>
 												<?php endforeach; ?>
 											</select>
 										</div>
@@ -74,7 +76,7 @@
 												<option value="BETWEEN 20 AND 30">20 - 30</option>
 												<option value="BETWEEN 30 AND 40">30 - 40</option>
 												<option value="BETWEEN 40 AND 50">40 - 50</option>
-												<option value=">=50"> lớn hơn 50 </option>
+												<option value=">= 50"> lớn hơn 50 </option>
 											</select>
 										</div>
 									</div>
@@ -93,7 +95,7 @@
 												<option value="BETWEEN 5 AND 10">5 - 10</option>
 												<option value="BETWEEN 10 AND 15">10 - 15</option>
 												<option value="BETWEEN 15 AND 20">15 - 20</option>
-												<option value=">=20"> lớn hơn 20 </option>
+												<option value=">= 20"> lớn hơn 20 </option>
 											</select>
 										</div>
 									</div>

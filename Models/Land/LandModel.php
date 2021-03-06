@@ -20,6 +20,7 @@
 		protected $thoigian;
 		protected $loai;
 		protected $idloai;
+		protected $iduser;
 
 		public function __set($name, $value)
 		{
