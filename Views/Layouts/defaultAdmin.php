@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <script src="Assets/ckeditor/ckeditor.js" type="text/javascript" charset="utf-8" ></script>
+  <script src="<?php echo WEBROOT; ?>/asset/ckeditor/ckeditor.js" type="text/javascript" charset="utf-8" ></script>
 
   <title>NTH Admin - Dashboard</title>
 
@@ -41,6 +41,8 @@
                         <style type="text/css">
                                     .pagination{padding:0px; margin:0px;}
                                 </style>
+  
+
 
 </head>
 
@@ -93,7 +95,7 @@
       </li>
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw"></i>
+          <i class="fas fa-user-circle fa-fw"></i> <?php echo $_SESSION["email_admin"]; ?>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Settings</a>
@@ -138,9 +140,9 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?area=Backend&controller=User&p=1">
+        <a class="nav-link" href="<?php echo WEBROOT; ?>admin/user/index/">
           <i class="fas fa-fw fa-table"></i>
-          <span>List User</span></a>
+          <span>Quản Lý Người Dùng</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo WEBROOT; ?>admin/category/index/">
@@ -157,9 +159,14 @@
             </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="index.php?area=Backend&controller=Cart&action=order">
+        <a class="nav-link" href="<?php echo WEBROOT; ?>admin/new/index/">
           <i class="fas fa-fw fa-table"></i>
-          <span>Danh Sách Đơn hàng</span></a>
+          <span>Quản Lý Tin Tức</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo WEBROOT; ?>admin/contact/index/">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản Lý Liên Hệ Người Dùng</span></a>
       </li>
     </ul>
 

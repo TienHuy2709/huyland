@@ -35,6 +35,7 @@
                  if (isset($list->id))
                  {
                  	$_SESSION["id_admin"] = $list->id;
+                    $_SESSION["email_admin"] = $email;
                     header("Location: " . WEBROOT . "admin/home/index");
                  }
 

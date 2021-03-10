@@ -1,10 +1,9 @@
   <div class="container">
-        <h1>Danh sách loại đất</h1>
+    <h1>Danh sách loại đất</h1>
     </div> 
-
-                <div class="col-md-12">
+            <div class="col-md-12">
                         <div style="margin-bottom:5px;">
-                            <a href="index.php?area=Backend&controller=Category&action=add" class="btn btn-primary">Thêm mới</a>
+                            <a href="<?php echo WEBROOT; ?>admin/category/add" class="btn btn-primary">Thêm mới</a>
                         </div>
                        <!--  <ul class="pagination" style="margin-bottom:5px;">
                                     <li class="page-item disabled">
@@ -21,7 +20,8 @@
                             <div class="panel-body">
                                 <table class="table table-bordered table-hover">
                                     <tr>
-                                        <th>Name</th>
+                                        <th style="width: 80%">Name</th>
+                                        <th>Trạng thái</th>
                                         <th style="width:100px;">
                                             
                                         </th>
@@ -29,13 +29,17 @@
                                     <?php foreach($category as $cate): ?>
                                     <tr>
                                         <td>
-                                            
                                                 <?php echo $cate->tenloai; ?>
+                                        </td>
+                                        <td>
+                                                <?php if($cate->trangthai==1) echo "Hiển thị";
+                                                    else echo "Không hiển thị";
+                                                 ?>
                                         </td>
 
                                         <td style="text-align:center;">
-                                            <a href="index.php?area=Backend&controller=Category&action=edit&id=<?php echo $rows->category_id; ?>">Edit</a>&nbsp;
-                                            <a href="index.php?area=Backend&controller=Category&action=delete&id=<?php echo $rows->category_id; ?>" onclick="return window.confirm('Are you sure?');">Delete</a>
+                                            <a href="<?php echo WEBROOT; ?>admin/category/edit/<?php echo $cate->id; ?>">Edit</a>&nbsp;
+                                            <a href="<?php echo WEBROOT; ?>admin/category/delete/<?php echo $cate->id; ?>" onclick="return window.confirm('Are you sure?');">Delete</a>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>

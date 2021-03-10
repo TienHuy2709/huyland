@@ -82,9 +82,16 @@
 			$sql = "DELETE FROM {$this->table} where id =:id";
 			$req = Database::getBdd()->prepare($sql);
 
-			return $req->execute([':id' => $model->getId()]);
+			return $req->execute([':id' => $model->id]);
 		}
 
+		/*Khoi tao ham xoa tat ca*/
+		public function deleteAll($model)
+		{
+			$sql = "DELETE FROM {$this->table}";
+			$req = Database::getBdd()->prepare($sql);
+			return $req->execute();
+		}
 		/*Khoi tao ham lay tat ca du lieu cua bang*/
 		public function all($model)
 		{
@@ -196,6 +203,13 @@
 			$sql = "UPDATE dat set hinhanh =:hinhanh where id =:id";
 			$req = Database::getBdd()->prepare($sql);
 			return $req->execute([':hinhanh' => $filename, ':id' => $id]);
+		}
+
+		public function updateView($id)
+		{
+			$sql = "UPDATE {$this->table} set luotxem = luotxem + 1 where id =:id";
+			$req = Database::getBdd()->prepare($sql);
+			return $req->execute([':id' => $id]);
 		}
 
 

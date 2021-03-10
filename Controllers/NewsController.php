@@ -37,10 +37,10 @@
             /*require(ROOT . 'Models/Task.php');*/
             $new = new NewsModel();
             $category = new CategoryModel();
-            
+           
             $d['detail'] = $this->repoNew->get($id);
             $d['category'] = $this->repoCate->getAll($category);
-
+             $this->repoNew->view($id);
             $this->set($d);
             $this->render("blog_detail");
         }

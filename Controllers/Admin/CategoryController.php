@@ -35,14 +35,65 @@
             $this->render("table_category");
         }
 
-        public function allId($id){
+        public function add(){
 
             $category = new CategoryModel();
 
-            $d['category'] = $this->repoCate->getAll($category);
+            extract($_POST);
+
+            if (isset($tenloai))
+            {
+                $category->tenloai = $tenloai;
+                $category->trangthai = $trangthai;
+
+                if ($this->repoCate->update($category))
+                {
+                    header("Location: " . WEBROOT . "admin/category/index");
+                }
+
+            }
+
+            $this->render("create-edit-category");
+        }
+
+
+        public function edit($id){
+
+             /*require(ROOT . 'Models/Task.php');*/
+            $category = new CategoryModel();
+
+            extract($_POST);
+
+            $d["cate"] = $this->repoCate->get($id);
+
+            if (isset($tenloai))
+            {
+                $category->id = $id;
+                $category->tenloai = $tenloai;
+                $category->trangthai = $trangthai;
+
+                if ($this->repoCate->update($category))
+                {
+                   header("Location: " . WEBROOT . "admin/category/index");
+                }
+
+            }
 
             $this->set($d);
-            $this->render("list_category");
+            $this->render("create-edit-category");
+        }
+
+        public function delete($id){
+
+           /*require(ROOT . 'Models/Task.php');*/
+            $category = new CategoryModel();
+            
+            $category->id = $id;
+
+            if ($this->repoCate->delete($category))
+            {
+                 header("Location: " . WEBROOT . "admin/category/index");
+            }
         }
 
 

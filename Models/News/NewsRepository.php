@@ -42,6 +42,10 @@
 			return $this->newRe->save($model);
 		}
 
+		public function view($id){
+			return $this->newRe->updateView($id);
+		}
+
 	}
 
  ?>

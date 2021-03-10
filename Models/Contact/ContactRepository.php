@@ -34,6 +34,11 @@
 			return $this->contactRe->delete($model);
 		}
 
+		public function deleteAll($model)
+		{
+			return $this->contactRe->deleteAll($model);
+		}
+
 		public function add($model){
 			return $this->contactRe->save($model);
 		}
