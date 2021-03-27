@@ -139,31 +139,30 @@
           <a class="dropdown-item" href="#">Blank Page</a>
         </div>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($this->request->controller=='user') echo 'active'; ?>">
         <a class="nav-link" href="<?php echo WEBROOT; ?>admin/user/index/">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản Lý Người Dùng</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($this->request->controller=='category') echo 'active'; ?>">
         <a class="nav-link" href="<?php echo WEBROOT; ?>admin/category/index/">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản Lý Thể Loại</span></a>
       </li>
-       <li class="nav-item">
+       <li class="nav-item <?php if($this->request->controller=='land') echo 'active'; ?>">
         <a class="nav-link dropdown-toggle" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
           <i class="fas fa-fw fa-table"></i>
-          <span>List Products</span></a>
+          <span>Quản Lý Các Mảnh Đất</span></a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="index.php?area=Backend&controller=Products&p=1">Sản phẩm</a>
-            <a class="dropdown-item" href="index.php?area=Backend&controller=Comment">Bình luận sản phẩm</a>
+            <a class="dropdown-item" href="<?php echo WEBROOT; ?>admin/land/index/">Danh sách đất</a>
             </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo WEBROOT; ?>admin/new/index/">
+      <li class="nav-item <?php if($this->request->controller=='new') echo 'active'; ?>">
+        <a class="nav-link active" href="<?php echo WEBROOT; ?>admin/new/index/">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản Lý Tin Tức</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <?php if($this->request->controller=='contact') echo 'active'; ?>">
         <a class="nav-link" href="<?php echo WEBROOT; ?>admin/contact/index/">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản Lý Liên Hệ Người Dùng</span></a>

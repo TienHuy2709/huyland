@@ -54,7 +54,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="properties-slider owl-carousel ftco-animate">
-						<?php foreach ($landhot as $hot): ?>
+						<?php foreach (array_reverse($landhot) as $hot): ?>
 						<div class="item">
 							<div class="properties">
 								<?php 
@@ -441,62 +441,23 @@
 				</div>
 			</div>
 			<div class="row d-flex">
+				<?php $dem=0; foreach (array_reverse($news) as $new):?>
+				<?php $dem++; if($dem>4) break; ?>
 				<div class="col-md-3 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20" style="background-image: url('<?php echo WEBROOT; ?>/asset/images/image_1.jpg');">
+						<a href="blog-single.html" class="block-20" style="background-image: url('<?php  echo WEBROOT; ?>/asset/news/<?php echo $new->hinhanh; ?>');">
 						</a>
 						<div class="text mt-3 d-block">
-							<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+							<h3 class="heading mt-3"><a href="<?php echo WEBROOT; ?>news/detail/<?php echo $new->id; ?>"><?php echo $new->ten; ?></a></h3>
 							<div class="meta mb-3">
-								<div><a href="#">Dec 6, 2018</a></div>
+								<div><a href="#"><?php echo $new->ngaydang; ?></a></div>
 								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+								<div><a href="#" class="meta-chat"><span class="icon-chat"></span><?php echo $new->luotxem; ?></a></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20" style="background-image: url('<?php echo WEBROOT; ?>/asset/images/image_2.jpg');">
-						</a>
-						<div class="text mt-3">
-							<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-							<div class="meta mb-3">
-								<div><a href="#">Dec 6, 2018</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20" style="background-image: url('<?php echo WEBROOT; ?>/asset/images/image_3.jpg');">
-						</a>
-						<div class="text mt-3">
-							<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-							<div class="meta mb-3">
-								<div><a href="#">Dec 6, 2018</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="blog-single.html" class="block-20" style="background-image: url('<?php echo WEBROOT; ?>/asset/images/image_4.jpg');">
-						</a>
-						<div class="text mt-3">
-							<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-							<div class="meta mb-3">
-								<div><a href="#">Dec 6, 2018</a></div>
-								<div><a href="#">Admin</a></div>
-								<div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 	</section>

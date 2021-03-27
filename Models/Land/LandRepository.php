@@ -53,6 +53,10 @@
 			return $this->landRe->getName($id);
 		}
 
+		public function countLand($p){
+			return $this->landRe->count($p);
+		}
+
 	}
 
  ?>

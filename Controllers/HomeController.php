@@ -9,16 +9,20 @@
     use HUYLAND\Models\Category\CategoryRepository;
     use HUYLAND\Models\Land\LandModel;
     use HUYLAND\Models\Land\LandRepository;
+    use HUYLAND\Models\News\NewsModel;
+    use HUYLAND\Models\News\NewsRepository;
     class HomeController extends Controller
     {
         private $repoCate;
         private $repoLand;
+        private $repoNew;
         private $reso;
         
         public function __construct()
         {
             $this->repoCate = new CategoryRepository();
             $this->repoLand = new LandRepository();
+            $this->repoNew = new NewsRepository();
             $this->reso = new ResourceModel();
             $_COOKIE["dat"] = array();
         }
@@ -27,11 +31,12 @@
             /*require(ROOT . 'Models/Task.php');*/
             $category = new CategoryModel();
             $land = new LandModel();
-
+            $new = new NewsModel();
             $d['category'] = $this->repoCate->getAll($category);
             $d['city'] = $this->reso->getCity();
-            $d['landhot'] = $this->repoLand->allIf($land,'');
-            
+            $d['landhot'] = $this->repoLand->allIf($land,'hot');
+            $d['news'] = $this->repoNew->getAll($new);
+
             $this->set($d);
             $this->render("index");
         }
@@ -76,7 +81,7 @@
         public function listCookie(){
 
             $data = array();
-            for($i =1;$i<10;$i++){
+            for($i =1;$i<1000;$i++){
                 if(isset($_COOKIE['dat_'.$i])){
                     $data[$i] = unserialize($_COOKIE['dat_'.$i], ["allowed_classes" => false]);
                 }
@@ -104,7 +109,7 @@
 
          public function countCookie(){
             $count = 0;
-             for($i =1;$i<10;$i++){
+             for($i =1;$i<1000;$i++){
                 if(isset($_COOKIE['dat_'.$i])){
                     $count ++;
                 }

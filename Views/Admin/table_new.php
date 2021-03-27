@@ -58,6 +58,8 @@
                                           -webkit-box-orient: vertical;
                                           overflow: hidden;
                                           display: -webkit-box;
+                                          max-height: 300px;
+                                          max-width: 500px
                                       }
                                   </style>
                                   <ul class="pagination">
