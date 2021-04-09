@@ -31,6 +31,7 @@
           <div class="col-md-6  d-flex">
             <form action="#" method="post" class="bg-white p-5 contact-form">
               <div class="form-group">
+                <?php if(isset($_SESSION["error_user"])) echo $_SESSION["error_user"]; ?>
                 <input type="email" class="form-control" name="email" required="" placeholder="Your Email">
               </div>
               <div class="form-group">
@@ -56,3 +57,4 @@
         </div>
       </div>
     </section>
+    <?php if(isset($_SESSION["error_user"])) unset($_SESSION["error_user"]); ?>

@@ -12,12 +12,12 @@
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Phone:</span> <a href="tel://1234567920"> 0981519920</a></p>
+	            <p><span>Phone:</span> <a href="tel://0981519920"> 0981519920</a></p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
           	<div class="info bg-white p-4">
-	            <p><span>Email:</span> <a href="mailto:info@yoursite.com">huy@gmail.com</a></p>
+	            <p><span>Email:</span> <a href="mailto://chi1cothe@gmail.com">huy@gmail.com</a></p>
 	          </div>
           </div>
           <div class="col-md-3 d-flex">
@@ -27,9 +27,17 @@
           </div>
         </div>
         <div class="row block-9">
-
+          <style type="text/css" media="screen">
+            p.error-user {
+              color: red;font-size: 14px;text-align: center;
+            }
+            p.error-user span {
+              font-size: 12px;
+            }
+          </style>
           <div class="col-md-6  d-flex">
             <form action="#" method="post" class="bg-white p-5 contact-form">
+              <?php if(isset($_SESSION["error_user"])) echo $_SESSION["error_user"]; ?>
               <div class="form-group">
                 <input type="email" class="form-control" name="email" required="" placeholder="Your Email">
               </div>
@@ -50,3 +58,4 @@
         </div>
       </div>
     </section>
+    <?php if(isset($_SESSION["error_user"])) unset($_SESSION["error_user"]); ?>

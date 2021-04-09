@@ -27,6 +27,8 @@
             $category = new CategoryModel();
             $land = new LandModel();
 
+            $d['name'] = "Chi tiết";
+
             $d['category'] = $this->repoCate->getAll($category);
 
             $d['detail'] = $this->repoLand->get($id);

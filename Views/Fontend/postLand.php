@@ -19,7 +19,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Loại đất</div>
                                     <div class="col-md-10">
-                                        <select name="idloai" required class="form-control" style="width: 300px; height: 200px">
+                                        <select name="idloai" required class="form-control select-state" style="width: 300px; height: 200px" placeholder="Pick a state...">
                                           <option></option>
                                           <?php foreach ($category as $cate): ?>
                                           <option value="<?php echo ucfirst($cate->id); ?>"><?php echo ucfirst($cate->tenloai); ?></option>
@@ -154,3 +154,32 @@
                             </div>
                         </div>
                     </div>
+
+<style type="text/css" media="screen">
+    #map {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
+<div id="map"></div>
+<!-- Replace YOUR_API_KEY here by your key above -->
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsqiCuZsCIU7BrDc3c0_jpvdsHRsSxCQw=initMap" async defer>
+  function initMap() {
+  var latLng = { lat: 21.0168864, lng: 105.7855574 }
+
+  // create map with center is latLng
+  // code
+
+  // each marker define one point
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+  });
+}
+</script>

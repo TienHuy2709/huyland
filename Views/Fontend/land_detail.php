@@ -15,14 +15,15 @@
           				<?php endforeach; ?>
           			</div>
 
-                <button id="addCookie"
+                <button 
                 <?php if(isset($_COOKIE["dat_".$detail->id])){
-                  echo "class='btn-danger btn btn-lg icon-heart' ";
+                  echo "class='btn-danger btn btn-lg icon-heart deleteCookie icon-detail' ";
                   echo "title='Đã yêu thích'";
+                  echo "data-id_delete=$detail->id";
                 }  
                 else{
-                  echo "class='btn-outline-info btn btn-lg icon-heart' ";
-                  echo "title='yêu thích'" ;
+                  echo "class='btn-outline-info btn btn-lg icon-heart icon-detail addCookie' ";
+                  echo "title='Yêu thích'" ;
                 } ?> ></button>
 
           		</div>

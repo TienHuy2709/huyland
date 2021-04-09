@@ -34,6 +34,7 @@
             $new = new NewsModel();
             $d['category'] = $this->repoCate->getAll($category);
             $d['city'] = $this->reso->getCity();
+            $d['landnew'] = $this->repoLand->allIf($land,'');
             $d['landhot'] = $this->repoLand->allIf($land,'hot');
             $d['news'] = $this->repoNew->getAll($new);
 
@@ -46,7 +47,7 @@
             extract($_POST);
             $category = new CategoryModel();
             $land = new LandModel();
-            
+            $d['name'] = "Tìm kiếm";
             $land->tendat = $tendat;
             $land->loai = $loai;
             $land->thanhpho = $thanhpho;

@@ -31,6 +31,8 @@
 
             $d['city'] = $this->reso->getCity();
 
+            $d['name'] = "Tất cả";
+
             $d['lands'] = $this->repoLand->getAll($land);
             
             $this->set($d);
@@ -43,6 +45,8 @@
             $land = new LandModel();
 
             $d['category'] = $this->repoCate->getAll($category);
+
+            $d['name'] = $this->repoCate->get($id)->tenloai;
 
             $d['city'] = $this->reso->getCity();
 

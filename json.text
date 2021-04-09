@@ -1,0 +1,28 @@
+<?php 
+$strJsonFileContents = file_get_contents("local.json");
+$array = json_decode($strJsonFileContents);
+foreach ($array as $key => $value) {
+	if($value->id==1) {
+		echo $value->id. "<br>";
+		echo $value->code. "<br>";
+		echo $value->name. "<br>";
+		foreach ($value->districts as $value2) {
+			if($value2->id == 2) {
+				echo "---".$value2->id. "<br>";
+				echo "---".$value2->name. "<br>";
+				foreach ($value2->wards as $value3) {
+					echo "------".$value3->id. "<br>";
+					echo "------".$value3->name. "<br>";
+					echo "------".$value3->prefix. "<br>";
+				}
+				foreach ($value2->projects as $value4) {
+					echo "------".$value4->id. "<br>";
+					echo "------".$value4->name. "<br>";
+					echo "------".$value4->lat. "<br>";
+					echo "------".$value4->lng. "<br>";
+				}
+			}
+		}
+	}
+}
+?>

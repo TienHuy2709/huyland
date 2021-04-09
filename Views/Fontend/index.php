@@ -47,123 +47,39 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Recent Posts </span>
-					<h2 class="mb-4">Recent Properties</h2>
+					<span class="subheading">Gần nhất </span>
+					<h2 class="mb-4">CÁC BÀI ĐĂNG GẦN ĐÂY</h2>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="properties-slider owl-carousel ftco-animate">
-						<?php foreach (array_reverse($landhot) as $hot): ?>
+						<?php foreach (array_reverse($landnew) as $new): ?>
 						<div class="item">
 							<div class="properties">
 								<?php 
-									$anh = explode(",", $hot->hinhanh);
+									$anh = explode(",", $new->hinhanh);
 								 ?>
-								<a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/products/<?php echo $hot->id; ?>/<?php echo $anh[0]; ?>);">
+								<a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $new->id; ?>" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/products/<?php echo $new->id; ?>/<?php echo $anh[0]; ?>);">
 									<div class="icon d-flex justify-content-center align-items-center">
 										<span class="icon-search2"></span>
 									</div>
 								</a>
 								<div class="text p-3">
-									<span class="status sale">Hot</span>
+									<span class="status sale">NEW</span>
 									<div class="d-flex">
 										<div class="one">
-											<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>" title="<?php echo $hot->tendat ?>"><?php echo $hot->tendat ?></a></h3>
-											<p><?php echo $hot->thanhpho ?></p>
+											<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $new->id; ?>" title="<?php echo $new->tendat ?>"><?php echo $new->tendat ?></a></h3>
+											<p><?php echo $new->thanhpho ?></p>
 										</div>
 										<div class="two">
-											<span class="price"><?php echo $hot->gia ?> tỷ</span>
+											<span class="price"><?php echo $new->gia ?> tỷ</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					<?php endforeach; ?>
-						<!-- <div class="item">
-							<div class="properties">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-3.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<span class="status sale">Sale</span>
-									<div class="d-flex">
-										<div class="one">
-											<h3><a href="#">North Parchmore Street</a></h3>
-											<p>Apartment</p>
-										</div>
-										<div class="two">
-											<span class="price">$20,000</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="properties">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-4.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<span class="status sale">Sale</span>
-									<div class="d-flex">
-										<div class="one">
-											<h3><a href="#">North Parchmore Street</a></h3>
-											<p>Apartment</p>
-										</div>
-										<div class="two">
-											<span class="price">$20,000</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="properties">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-5.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<span class="status rent">Rent</span>
-									<div class="d-flex">
-										<div class="one">
-											<h3><a href="#">North Parchmore Street</a></h3>
-											<p>Apartment</p>
-										</div>
-										<div class="two">
-											<span class="price">$900 <small>/ month</small></span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="properties">
-								<a href="#" class="img d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-6.jpg);">
-									<div class="icon d-flex justify-content-center align-items-center">
-										<span class="icon-search2"></span>
-									</div>
-								</a>
-								<div class="text p-3">
-									<span class="status sale">Sale</span>
-									<div class="d-flex">
-										<div class="one">
-											<h3><a href="#">North Parchmore Street</a></h3>
-											<p>Apartment</p>
-										</div>
-										<div class="two">
-											<span class="price">$20,000</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</div>
@@ -174,125 +90,40 @@
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Special Offers</span>
-					<h2 class="mb-4">Most Recommended Properties</h2>
+					<span class="subheading">Hot nhất</span>
+					<h2 class="mb-4">CÁC BÀI ĐĂNG ĐANG ĐƯỢC CHÚ Ý</h2>
 				</div>
 			</div>    		
 		</div>
 		<div class="container-fluid">
 			<div class="row">
+				<?php $dem=0; foreach (array_reverse($landhot) as $hot): ?>
+					<?php $dem++; if($dem>4) break; ?>
 				<div class="col-sm col-md-6 col-lg ftco-animate">
 					<div class="properties">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-1.jpg);">
+						<?php 
+						$anh = explode(",", $hot->hinhanh);
+						?>
+						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/products/<?php echo $hot->id; ?>/<?php echo $anh[0]; ?>);">
 							<div class="icon d-flex justify-content-center align-items-center">
 								<span class="icon-search2"></span>
 							</div>
 						</a>
 						<div class="text p-3">
-							<span class="status sale">Sale</span>
+							<span class="status rent">HOT</span>
 							<div class="d-flex">
 								<div class="one">
-									<h3><a href="#">North Parchmore Street</a></h3>
-									<p>Apartment</p>
+									<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>"><?php echo $hot->tendat ?></a></h3>
+									<p><?php echo $hot->thanhpho ?></p>
 								</div>
 								<div class="two">
-									<span class="price">$20,000</span>
+									<span class="price"><?php echo $hot->gia ?> tỷ</span>
 								</div>
 							</div>
-							<p>Far far away, behind the word mountains, far from the countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="flaticon-selection"></i> 250sqft</span>
-								<span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
-								<span><i class="flaticon-bed"></i> 4</span>
-							</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="properties">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-2.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<span class="status sale">Sale</span>
-							<div class="d-flex">
-								<div class="one">
-									<h3><a href="#">North Parchmore Street</a></h3>
-									<p>Apartment</p>
-								</div>
-								<div class="two">
-									<span class="price">$20,000</span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="flaticon-selection"></i> 250sqft</span>
-								<span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
-								<span><i class="flaticon-bed"></i> 4</span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="properties">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-3.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<span class="status rent">Rent</span>
-							<div class="d-flex">
-								<div class="one">
-									<h3><a href="#">North Parchmore Street</a></h3>
-									<p>Apartment</p>
-								</div>
-								<div class="two">
-									<span class="price">$800 <small>/ month</small></span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="flaticon-selection"></i> 250sqft</span>
-								<span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
-								<span><i class="flaticon-bed"></i> 4</span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm col-md-6 col-lg ftco-animate">
-					<div class="properties">
-						<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(<?php echo WEBROOT; ?>/asset/images/properties-4.jpg);">
-							<div class="icon d-flex justify-content-center align-items-center">
-								<span class="icon-search2"></span>
-							</div>
-						</a>
-						<div class="text p-3">
-							<span class="status sale">Sale</span>
-							<div class="d-flex">
-								<div class="one">
-									<h3><a href="#">North Parchmore Street</a></h3>
-									<p>Apartment</p>
-								</div>
-								<div class="two">
-									<span class="price">$20,000</span>
-								</div>
-							</div>
-							<p>Far far away, behind the word mountains, far from the countries</p>
-							<hr>
-							<p class="bottom-area d-flex">
-								<span><i class="flaticon-selection"></i> 250sqft</span>
-								<span class="ml-auto"><i class="flaticon-bathtub"></i> 3</span>
-								<span><i class="flaticon-bed"></i> 4</span>
-							</p>
-						</div>
-					</div>
-				</div>
+			<?php endforeach; ?>
 			</div>
 		</div>
 	</section>

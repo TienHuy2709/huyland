@@ -4,7 +4,6 @@
 	<title>Royal Estate - Free Bootstrap 4 Template by Colorlib</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/open-iconic-bootstrap.min.css">
@@ -20,7 +19,9 @@
 
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/bootstrap-datepicker.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/jquery.timepicker.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/flaticon.css">
 	<link rel="stylesheet" href="<?php echo WEBROOT; ?>/asset/css/icomoon.css">
@@ -287,8 +288,9 @@
 							id : id_dat,
 						},
 						success : function(resule){
-
 							alert("Đã xoá khỏi danh sách yêu thích");
+							$(".icon-detail").removeClass("deleteCookie btn-danger");
+							$(".icon-detail").addClass("btn-outline-info addCookie");
 							load();
 							count();
 						},
@@ -299,7 +301,8 @@
 				});
 
 				<?php if($this->request->controller=='detailland'): ?>
-				$("#addCookie").on('click',function(){
+				$(document).on('click','.addCookie',function(){
+
 					$.ajax({
 						url : "<?php echo WEBROOT."home/addHeart/".$detail->id; ?>",
 						type : "post",
@@ -312,6 +315,8 @@
 								window.location.reload();
 							},100);*/
 							alert("Đã thêm vào danh sách yêu thích");
+							$(".icon-detail").addClass("btn-danger deleteCookie");
+							$(".icon-detail").removeClass("btn-outline-info addCookie");
 							load();
 							count();
 						},

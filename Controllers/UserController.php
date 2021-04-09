@@ -34,7 +34,6 @@
             $this->set($d);
             $user = new UserModel();
             extract($_POST);
-
             if (isset($email))
             {
                 $user->email=$email;
@@ -47,13 +46,13 @@
                  	$_SESSION["id_user"] = $list->id;
                     header("Location: " . WEBROOT . "home/index");
                  }
-
-                 else{
-                 	header("Location: " . WEBROOT . "user/login");
+                 else {
+                  $_SESSION["error_user"] = "<p class='error-user'>Tài khoản hoặc mật khẩu không đúng</p>";
+                  $this->render("login");
+                  exit();
                  }
 
             }
-
             $this->render("login");
         }
 
@@ -83,7 +82,9 @@
                  }
 
                 else{
-                  	header("Location: " . WEBROOT . "user/create");
+                  $_SESSION["error_user"] = "<p class='error-user'>Thông tin đăng kí không chính xác</p>";
+                  $this->render("createUser");
+                  exit();
                  }
 
             }
@@ -93,7 +94,8 @@
 
         public function createLand(){
           if(!isset($_SESSION["id_user"])){
-              echo "Bạn chưa đăng nhập. <a href='".WEBROOT."user/login'>Đăng nhập ngay</a>";
+              $_SESSION["error_user"] = "<p class='error-user'>Bạn cần phải đăng nhập để thực hiện việc đăng tin <br><span>(nếu không có hay bấm đăng ký)</span></p>";
+              header("Location: " . WEBROOT . "user/login");
           }
           else{
           $category = new CategoryModel();
