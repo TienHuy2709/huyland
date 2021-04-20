@@ -10,6 +10,7 @@
 		protected $hinhanh;
 		protected $thanhpho;
 		protected $diadiem;
+		protected $toado;
 		protected $gia;
 		protected $dientich;
 		protected $mota;

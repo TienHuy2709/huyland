@@ -104,6 +104,9 @@
 				$sql = "SELECT {$properties} FROM {$this->table} order by id desc limit $page, $this->data ";
 			}
 			else $sql = "SELECT {$properties} FROM {$this->table}";
+			if($this->data==''){
+				$sql = "SELECT {$properties} FROM {$this->table} order by id desc";
+			}
 			$req = Database::getBdd()->prepare($sql);
 			$req->execute();
 			return $req->fetchAll(PDO::FETCH_OBJ);
@@ -192,13 +195,12 @@
 			return $req->fetchAll(PDO::FETCH_OBJ);
 		}
 
-		public function getName($id)
+		public function getAddress()
 		{
-			$sql = "SELECT tendat FROM {$this->table} where id =:id";
-			$req = Database::getBdd()->prepare($sql);
-			$req->execute([':id' => $id]);
+			$strJsonFileContents = file_get_contents("../local.json");
+			$array = json_decode($strJsonFileContents);
 			
-			return $req->fetchObject();
+			return $array;
 		}
 
 		public function log($model)
@@ -235,6 +237,14 @@
 			return $req->rowCount(PDO::FETCH_OBJ);
 		}
 
+		public function getName($id)
+		{
+			$sql = "SELECT tendat FROM {$this->table} where id =:id";
+			$req = Database::getBdd()->prepare($sql);
+			$req->execute([':id' => $id]);
+			
+			return $req->fetchObject();
+		}
 
 	}
 

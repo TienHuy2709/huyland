@@ -29,12 +29,11 @@
             
             $d['category'] = $this->repoCate->getAll($category);
 
-            $d['city'] = $this->reso->getCity();
 
             $d['name'] = "Tất cả";
 
             $d['lands'] = $this->repoLand->getAll($land);
-            
+
             $this->set($d);
             $this->render("list_category");
         }
@@ -47,8 +46,7 @@
             $d['category'] = $this->repoCate->getAll($category);
 
             $d['name'] = $this->repoCate->get($id)->tenloai;
-
-            $d['city'] = $this->reso->getCity();
+            $d['namelands'] = $this->reso->getAddress();
 
             $d['lands'] = $this->repoLand->getAllByCategoryId($land,$id);
 

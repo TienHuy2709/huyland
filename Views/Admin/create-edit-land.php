@@ -1,4 +1,5 @@
 <div class="container">
+    <?php if(!empty($land->id)) $id_edit = $land->thanhpho;?>
         <h1>Đăng tin bán đất</h1>
                     </div>    
                     <div class="col-md-12">  
@@ -49,33 +50,29 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Thành phố</div>
                                     <div class="col-md-10">
-                                        <select name="thanhpho" required class="form-control" style="width: 300px; line-height: 30px">
-                                            <option></option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Hồ Chí Minh") echo "selected"; ?>  value="Hồ Chí Minh">Hồ Chí Minh</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Hà Nội") echo "selected"; ?>  value="Hà Nội">Hà Nội</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Hải Phòng") echo "selected"; ?> value="Hải Phòng">Hải Phòng</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Bình Dương") echo "selected"; ?> value="Bình Dương">Bình Dương</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Hải Dương") echo "selected"; ?> value="Hải Dương">Hải Dương</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Huế") echo "selected"; ?> value="Huế">Huế</option>
-
-                                            <option <?php if(isset($land->thanhpho) && $land->thanhpho=="Lào Cai") echo "selected"; ?> value="Lào Cai">Lào Cai</option>
+                                        <select name="thanhpho" id="thanhpho" required class="form-control select-state" style="width: 300px;line-height: 30px;">
                                         </select>
                                     </div>
                                 </div>
                                 <!-- end rows -->
+                                <!-- end rows -->
+                                <!-- rows -->
+                                <div id="displayHuyen" style="margin-top: 10px">
+                                </div>
+                                <!-- end rows -->
+                                <!-- rows -->
+                                <div id="displayXa-Duong" style="margin-top: 10px">
+                                </div>
+                                <!-- end rows -->
+                                <!-- rows -->
                                 <!-- rows -->
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Địa chỉ</div>
                                     <div class="col-md-10">
-                                        <input type="text" required value="<?php if(isset($land->diadiem)) echo $land->diadiem; ?>" name="diadiem" class="form-control" required>
+                                        <input type="text" required value="<?php if(isset($land->diadiem)) echo $land->diadiem; ?>" id="diadiem" name="diadiem" class="form-control" required>
                                     </div>
                                 </div>
+                                <input type="text" value="" name="toado" id="toado" style="display: none" >
                                 <!-- end rows -->
                                  <div class="row" style="margin-top:5px;">
                                   <div class="col-md-2">Giá bán</div>

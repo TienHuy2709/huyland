@@ -33,7 +33,7 @@
             $land = new LandModel();
             $new = new NewsModel();
             $d['category'] = $this->repoCate->getAll($category);
-            $d['city'] = $this->reso->getCity();
+            $d['namelands'] = $this->reso->getAddress();
             $d['landnew'] = $this->repoLand->allIf($land,'');
             $d['landhot'] = $this->repoLand->allIf($land,'hot');
             $d['news'] = $this->repoNew->getAll($new);
@@ -57,9 +57,16 @@
 
             $d['category'] = $this->repoCate->getAll($category);
 
-            $d['city'] = $this->reso->getCity();
-
             $d['lands'] = $this->repoLand->findByKey($land);
+
+            if(!empty($thanhpho)){
+                $array = $this->reso->getAddress();
+                foreach ($array as $value) {
+                    if($value->id == $thanhpho){
+                       $d['namelands'] = $value->name;
+                    }
+                }
+            }
             
             $this->set($d);
             $this->render("search_land");

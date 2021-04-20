@@ -277,9 +277,8 @@
 				
 					load();
 					
-
 				$(document).on('click','.deleteCookie',function(){
-					var id_dat = $(this).data('id_delete'); 
+					var id_dat = $(this).data('id_delete');
 					$.ajax({
 						url : "<?php echo WEBROOT."home/deleteHeart/"; ?>",
 						type : "post",
@@ -302,7 +301,6 @@
 
 				<?php if($this->request->controller=='detailland'): ?>
 				$(document).on('click','.addCookie',function(){
-
 					$.ajax({
 						url : "<?php echo WEBROOT."home/addHeart/".$detail->id; ?>",
 						type : "post",
@@ -328,6 +326,61 @@
 					});
 				});
 			<?php endif; ?>
+				function loadcity(){
+                            $.ajax({
+                            url : "<?php echo WEBROOT."getAddress/index"?>",
+                            type : "get",
+                            dataType : "text",
+                            data : {},
+                            success : function(resule){
+                                $("#thanhpho").html(resule);
+                            //Load lại trang theo thời gian cho phép
+                            /*setInterval(function(){
+                                window.location.reload();
+                            },100);*/
+                        },
+                    });
+                }
+				loadcity();
+				$(document).on('click','#thanhpho',function(){
+					var id_huyen = $("#thanhpho").val(); 
+					$.ajax({
+						url : "<?php echo WEBROOT."getAddress/getHuyen"; ?>",
+						type : "post",
+						dataType : "text",
+						data : {
+							id : id_huyen,
+						},
+						success : function(resule){
+							$("#displayHuyen").html(resule);
+						},
+					});
+				});
+
+				$(document).on('click','#huyen',function(){
+					var id_xa = $("#huyen").val(); 
+					$.ajax({
+						url : "<?php echo WEBROOT."getAddress/getStreet"; ?>",
+						type : "post",
+						dataType : "text",
+						data : {
+							id : id_xa,
+						},
+						success : function(resule){
+							$("#displayXa-Duong").html(resule);
+						},
+					});
+				});
+
+				$(document).on('click','#diadiem',function(){
+					var tp = $("#thanhpho option:selected").text();
+					var huyen = $("#huyen option:selected").text();
+					var xaduong = $("#xa_duong option:selected").text();
+					var lat = $("#xa_duong option:selected").data('lat_land');
+					var lng = $("#xa_duong option:selected").data('lng_land');
+					$("#diadiem").val(xaduong + ' - ' + huyen + ' - ' +tp);
+					$("#toado").val(lat +' '+ lng);
+				});
 			})
 		</script>
 	</body>

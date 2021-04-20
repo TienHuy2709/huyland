@@ -7,7 +7,6 @@
         var $vars = [];
         var $layout = "default";
         private $request;
-
         function set($d)
         {
             $this->vars = array_merge($this->vars, $d);

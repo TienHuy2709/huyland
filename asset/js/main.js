@@ -107,6 +107,8 @@
 				}
 			}
 		});
+
+
 		$('.carousel-testimony').owlCarousel({
 			autoplay: true,
 			loop: true,
@@ -154,7 +156,6 @@
 
 	};
 	carousel();
-
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
 		// 	 timer;

@@ -107,6 +107,7 @@
            $land->tendat = $tendat;
            $land->thanhpho = $thanhpho;
            $land->diadiem = $diadiem;
+           $land->toado = $toado;
            $land->gia = $gia;
            $land->dientich = $dientich;
            $land->mota = $mota;
