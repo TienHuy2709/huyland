@@ -14,7 +14,7 @@
         {
             if(is_null(self::$bdd)) 
             {
-                self::$bdd = new PDO("mysql:host=localhost;dbname=huyland", 'root', '');
+                self::$bdd = new PDO("mysql:host=localhost;dbname=huy_land1", 'root', '');
             }
 
             return self::$bdd;

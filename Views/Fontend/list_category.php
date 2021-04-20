@@ -22,7 +22,13 @@
     						<div class="d-flex">
     							<div class="one">
 		    						<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $land->id; ?>" title="<?php echo $land->tendat ?>"><?php echo $land->tendat; ?></a></h3>
-		    						<p><?php echo $land->thanhpho; ?></p>
+		    						<p>
+                                        <?php 
+                                        foreach ($namelands as $value) {
+                                        if($value->id == $land->thanhpho)
+                                            echo $value->name;}
+                                         ?>     
+                                    </p>
 	    						</div>
 	    						<div class="two">
 	    							<span class="price"><?php echo $land->gia; ?> tỷ</span>

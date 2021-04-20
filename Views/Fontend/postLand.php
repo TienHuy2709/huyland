@@ -19,7 +19,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Loại đất</div>
                                     <div class="col-md-10">
-                                        <select name="idloai" required class="form-control select-state" style="width: 300px; height: 200px" placeholder="Pick a state...">
+                                        <select name="idloai" required class="form-control " style="width: 300px; height: 200px" placeholder="Pick a state...">
                                           <option></option>
                                           <?php foreach ($category as $cate): ?>
                                           <option value="<?php echo ucfirst($cate->id); ?>"><?php echo ucfirst($cate->tenloai); ?></option>
@@ -44,27 +44,28 @@
                                 <!-- rows -->
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Thành phố</div>
-                                    <div class="col-md-10">
-                                        <select name="thanhpho" required class="form-control" style="width: 300px; height: 200px">
-                                            <option></option>
-                                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
-                                            <option  value="Hà Nội">Hà Nội</option>
-                                            <option  value="Hải Phòng">Hải Phòng</option>
-                                            <option  value="Bình Dương">Bình Dương</option>
-                                            <option  value="Hải Dương">Hải Dương</option>
-                                            <option  value="Huế">Huế</option>
-                                            <option  value="Lào Cai">Lào Cai</option>
+                                    <div class="col-md-10" style="float: left">
+                                        <select name="thanhpho" id="thanhpho" required class="form-control select-state" style="width: 300px; height: 200px">
                                         </select>
                                     </div>
+                                </div>
+                                <!-- end rows -->
+                                <!-- rows -->
+                                <div id="displayHuyen" style="margin-top: 10px">
+                                </div>
+                                <!-- end rows -->
+                                <!-- rows -->
+                                <div id="displayXa-Duong" style="margin-top: 10px">
                                 </div>
                                 <!-- end rows -->
                                 <!-- rows -->
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Địa chỉ</div>
                                     <div class="col-md-10">
-                                        <input type="text" required value="" name="diadiem" class="form-control" required>
+                                        <input type="text" required value="" name="diadiem" id="diadiem" class="form-control" required>
                                     </div>
                                 </div>
+                                <input type="text" value="" name="toado" id="toado" style="display: none" >
                                 <!-- end rows -->
                                  <div class="row" style="margin-top:5px;">
                                   <div class="col-md-2">Giá bán</div>

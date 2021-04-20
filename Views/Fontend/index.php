@@ -70,7 +70,13 @@
 									<div class="d-flex">
 										<div class="one">
 											<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $new->id; ?>" title="<?php echo $new->tendat ?>"><?php echo $new->tendat ?></a></h3>
-											<p><?php echo $new->thanhpho ?></p>
+											<p>
+												<?php 
+											foreach ($namelands as $value) {
+												if($value->id == $new->thanhpho)
+													echo $value->name;}
+												?>     
+											</p>
 										</div>
 										<div class="two">
 											<span class="price"><?php echo $new->gia ?> tỷ</span>
@@ -114,7 +120,13 @@
 							<div class="d-flex">
 								<div class="one">
 									<h3><a href="<?php echo WEBROOT; ?>detailland/index/<?php echo $hot->id; ?>"><?php echo $hot->tendat ?></a></h3>
-									<p><?php echo $hot->thanhpho ?></p>
+									<p>
+										<?php 
+										foreach ($namelands as $value) {
+											if($value->id == $hot->thanhpho)
+												echo $value->name;}
+											?>     
+									</p>
 								</div>
 								<div class="two">
 									<span class="price"><?php echo $hot->gia ?> tỷ</span>

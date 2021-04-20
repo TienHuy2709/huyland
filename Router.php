@@ -3,7 +3,6 @@
 namespace HUYLAND;
 class Router
 {
-
     static public function parse($url, $request)
     {
         $url = trim($url);
@@ -52,9 +51,6 @@ class Router
                 $request->params = array_slice($explode_url, 2);
             }*/
             }
-
-            
-           
         }
 
     }

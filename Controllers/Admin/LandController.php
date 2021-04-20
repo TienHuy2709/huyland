@@ -43,6 +43,7 @@
             $d['category'] = $this->repoCate->getAll($category);
 
             $d['lands'] = $this->repoLand->getAll($land);
+            $d['namelands'] = $this->reso->getAddress();
             
             $this->set($d);
 
@@ -70,6 +71,7 @@
            $land->tendat = $tendat;
            $land->thanhpho = $thanhpho;
            $land->diadiem = $diadiem;
+           $land->toado = $toado;
            $land->gia = $gia;
            $land->dientich = $dientich;
            $land->mota = $mota;
@@ -147,6 +149,7 @@
            $land->tendat = $tendat;
            $land->thanhpho = $thanhpho;
            $land->diadiem = $diadiem;
+           $land->toado = $toado;
            $land->gia = $gia;
            $land->dientich = $dientich;
            $land->mota = $mota;

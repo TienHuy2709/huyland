@@ -35,11 +35,7 @@
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="thanhpho" id="" class="form-control">
-												<option value=""></option>
-												<?php foreach ($city as $ci): ?>
-												<option value="<?php echo $ci->thanhpho ?>"><?php echo $ci->thanhpho ?></option>
-												<?php endforeach; ?>
+											<select name="thanhpho" id="thanhpho" class="form-control select-state">
 											</select>
 										</div>
 									</div>

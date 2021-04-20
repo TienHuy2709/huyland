@@ -40,7 +40,11 @@
                                                     <div class="noidung"><?php echo $land->tendat; ?></div>
                                                 </td>
                                                 <td >
-                                                    <?php echo $land->thanhpho; ?>
+                                                   <?php 
+                                                   foreach ($namelands as $value) {
+                                                    if($value->id == $land->thanhpho)
+                                                        echo $value->name;}
+                                                    ?>
                                                 </td>
                                                 <td >
                                                     <?php echo $land->dientich; ?> m<sup>2</sup>
