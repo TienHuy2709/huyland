@@ -24,6 +24,7 @@
                 else{
                   echo "class='btn-outline-info btn btn-lg icon-heart icon-detail addCookie' ";
                   echo "title='Yêu thích'" ;
+                  echo "data-id_delete=$detail->id";
                 } ?> ></button>
 
               </div>
@@ -58,45 +59,6 @@
                 </div>
               </div>
 
-              <div class="col-md-12 properties-single ftco-animate mb-5 mt-4">
-                <h4 class="mb-4">Review &amp; Ratings</h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <form method="post" class="star-rating">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                          <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i> 100 Ratings</span></p>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                           <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i> 30 Ratings</span></p>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                          <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 5 Ratings</span></p>
-                       </label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                          <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">
-                          <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
               <div class="col-md-12 properties-single ftco-animate mb-5 mt-5 list-land">
                 <h4 class="mb-4">Các mảnh đất xung quanh : </h4>
                 <div class="range-wrap">
@@ -151,7 +113,10 @@
                     km : kmLand,
                   },
                   success : function(resule){
-                    $('.displayLand').html(resule);
+                    if(resule == ''){
+                      $('.displayLand').html("Không có mảnh đất nào trong bán kính "+kmLand+" km");
+                    }
+                    else $('.displayLand').html(resule);
                     $('.related-land').owlCarousel({
                       autoplay: true,
                       loop: true,
@@ -175,7 +140,7 @@
                     });
             },
             error: function(){
-              $('.displayLand').html("Không có mảnh đất nào");
+              $('.displayLand').html("Không có mảnh đất nào trong bán kính "+kmLand+" km");
             }
           });
               }
@@ -191,7 +156,10 @@
               km : kmLand,
             },
             success : function(resule){
-              $('.displayLand').html(resule);
+              if(resule == ''){
+                $('.displayLand').html("Không có mảnh đất nào trong bán kính "+kmLand+" km");
+              }
+              else $('.displayLand').html(resule);
               $('.related-land').owlCarousel({
                 autoplay: true,
                 loop: true,
@@ -215,17 +183,17 @@
               });
             },
             error: function(){
-              $('.displayLand').html("Không có mảnh đất nào");
+              $('.displayLand').html("Không có mảnh đất nào trong bán kính "+kmLand+" km");
             }
           });
         })
           </script>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
-              <form action="#" class="search-form">
+              <form action="/huyland/home/search/" method="post" class="search-form">
                 <div class="form-group">
                   <span class="icon fa fa-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                  <input type="text" name="tendat" id="tendat" class="form-control" placeholder="Type a keyword and hit enter">
                 </div>
               </form>
             </div>
@@ -276,22 +244,19 @@
             </div>
 
             <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
+              <h3>Thành Phố</h3>
               <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">dish</a>
-                <a href="#" class="tag-cloud-link">menu</a>
-                <a href="#" class="tag-cloud-link">food</a>
-                <a href="#" class="tag-cloud-link">sweet</a>
-                <a href="#" class="tag-cloud-link">tasty</a>
-                <a href="#" class="tag-cloud-link">delicious</a>
-                <a href="#" class="tag-cloud-link">desserts</a>
-                <a href="#" class="tag-cloud-link">drinks</a>
+                <?php $dem=0; shuffle($namelands); foreach ($namelands as $value): ?>
+                <?php if($dem==10) break; ?>
+                <a href="/huyland/home/searchCity/<?php echo $value->id;?>" class="tag-cloud-link"><?php echo $value->name; ?></a>
+                <?php $dem++; ?>
+              <?php endforeach; ?>
               </div>
             </div>
 
             <div class="sidebar-box ftco-animate">
               <h3>Paragraph</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+              <p>Ngày nay với sự phát triển của khoa học kỹ thuật hiện đại trong đó có ngành CNTT được cho là một trong những ngành phát triển với tốc độ nhanh chóng và có tầm ảnh hưởng rất lớn đến xã hội hiện đại ngày nay cũng như nền kinh tế của một quốc gia.</p>
             </div>
           </div>
         </div>

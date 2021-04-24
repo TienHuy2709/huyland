@@ -34,13 +34,18 @@
             $landRelated = '<div class="related-land owl-carousel">';
 
             $dat=(explode(' ',$d['detail']->toado));
+            if(count($dat) <= 1){
+                return $landRelated .= "</div>";
+            }
+            $dem = 0;
             foreach (array_reverse($d['lands']) as $value) {
                 $anh = explode(",", $value->hinhanh);
                 if(!empty($value->toado) && $value->thanhpho == $d['detail']->thanhpho && $value->id != $d['detail']->id ){
                 $dat1=(explode(' ',$value->toado));
                 $km1 = $this->countKM($dat[0],$dat1[0],$dat[1],$dat1[1]);
                 if($km1 <= $km){
-                   $landRelated .= "<div class='item'>
+                    $dem++;
+                    $landRelated .= "<div class='item'>
                           <div class='properties'>
                             <a href='";
                     $landRelated .="/huyland/detailland/index/";
@@ -67,13 +72,13 @@
                     $landRelated .= "<div class='two'><span class='price'>";
                     $landRelated .= $value->gia."tỷ</span>";
                     $landRelated .= "</div></div></div></div></div></div>";
-
                 }
            }
         }
         $landRelated .= "</div>";
-        if($landRelated != '') echo $landRelated;
-        else return null;
+        $landRelated .="<p>Số mảnh đất trong bán kính $km : $dem</p>";
+        echo $landRelated;
+        
     }
     function countKM($x1,$x2,$y1,$y2){
             $longi1 = deg2rad($y1); 

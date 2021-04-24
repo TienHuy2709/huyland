@@ -52,7 +52,7 @@
         var_dump($d['lands']);die;*/
         $this->set($d);
         $this->render("land_detail");
-    }    
+    }
 }
 
 ?>

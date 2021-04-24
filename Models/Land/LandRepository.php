@@ -19,10 +19,10 @@
 			return $this->landRe->all($model);
 		}
 
-		public function getAllByCategoryId($model,$id)
+		public function getAllByCategoryId($model,$id,$all)
 		{
 			/*Tra ve ham all trong TaskResourceModel*/
-			return $this->landRe->allId($model,$id);
+			return $this->landRe->allId($model,$id,$all);
 		}
 		public function get($id){
 			return $this->landRe->find($id);

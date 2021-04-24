@@ -48,7 +48,7 @@
             $d['name'] = $this->repoCate->get($id)->tenloai;
             $d['namelands'] = $this->reso->getAddress();
 
-            $d['lands'] = $this->repoLand->getAllByCategoryId($land,$id);
+            $d['lands'] = $this->repoLand->getAllByCategoryId($land,$id,'idloai');
 
             $this->set($d);
             $this->render("list_category");
