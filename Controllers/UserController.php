@@ -44,6 +44,7 @@
                  if (isset($list->id))
                  {
                  	$_SESSION["id_user"] = $list->id;
+                  $_SESSION["name_user"] = $list->ten;
                     header("Location: " . WEBROOT . "home/index");
                  }
                  else {
@@ -58,6 +59,7 @@
 
         public function logout(){
         	unset($_SESSION["id_user"]);
+          unset($_SESSION["name_user"]);
         	header("Location: " . WEBROOT . "home/index");
         }
 
@@ -77,8 +79,11 @@
                 $user->matkhau = $matkhau;
                  if ($this->repoUser->update($user))
                  {
-                 	$_SESSION["id_user"] = $this->reso->getNewID();
-                  	header("Location: " . WEBROOT . "home/index");
+                  $id = $this->reso->getNewID();
+                  $customer = $this->repoUser->get($id);
+                 	$_SESSION["id_user"] = $customer->id;
+                  $_SESSION["name_user"] = $customer->ten;
+                  header("Location: " . WEBROOT . "home/index");
                  }
 
                 else{

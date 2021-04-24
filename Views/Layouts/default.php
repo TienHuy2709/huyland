@@ -102,9 +102,22 @@
 					<?php if(!isset($_SESSION["id_user"])): ?>
 					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>user/login/" class="nav-link"><span class="icon-log-in-outline"></span> Đăng nhập</a></li>
 					<?php else: ?>
-					<li class="nav-item cta cta-log"><a href="<?php echo WEBROOT ?>user/logout/" class="nav-link" onclick="return window.confirm('Bạn có chắc chắn muốn đăng xuất');"><span class="icon-log-in-outline"></span> Đăng xuất</a></li>
+					<li class="nav-item cta log cta-log dropdown"><a href="" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="icon-log-in-outline"></span> <?php echo $_SESSION["name_user"]; ?></a>
+						<ul class="dropdown-menu multi-column columns-1"> 
+							<div class="row"> 
+								<div class="col-sm-12"> 
+									<ul class="multi-column-dropdown"> 
+										<li><a href="#">Quản lý mảnh đất</a></li>
+										<li><a href="<?php echo WEBROOT ?>user/logout/" onclick="return window.confirm('Bạn có chắc chắn muốn đăng xuất');">Đăng xuất</a></li>
+									</ul> 
+							</div> 
+						</ul>
+					</li>
 					<?php endif; ?>
 					<style type="text/css" media="screen">
+						.cta.log ul{
+							min-width: 200px;
+						}
 						.cta ul{
 							max-width: 100%;
 							min-width: 240px;

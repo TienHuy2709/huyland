@@ -112,10 +112,10 @@
 			return $req->fetchAll(PDO::FETCH_OBJ);
 		}
 
-		public function allId($model,$id)
+		public function allId($model,$id,$all)
 		{
 			$properties = implode(',', array_keys($model->getProperties()));
-			$sql = "SELECT {$properties} FROM {$this->table} where idloai=:id";
+			$sql = "SELECT {$properties} FROM {$this->table} where ".$all."=:id";
 			$req = Database::getBdd()->prepare($sql);
 			$req->execute([':id' => $id]);
 

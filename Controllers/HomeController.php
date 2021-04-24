@@ -49,25 +49,44 @@
             $land = new LandModel();
             $d['name'] = "Tìm kiếm";
             $land->tendat = $tendat;
-            $land->loai = $loai;
-            $land->thanhpho = $thanhpho;
-            $land->idloai = $idloai;
-            $land->dientich = $dientich;
-            $land->gia = $gia;
+            if(empty($loai) && empty($thanhpho) && empty($idloai) && empty($dientich) && empty($gia)){
+             $land->loai = "";
+             $land->thanhpho = "";
+             $land->idloai = "";
+             $land->dientich = "";
+             $land->gia = ""; 
+            }
+            else {
+                $land->loai = $loai;
+                $land->thanhpho = $thanhpho;
+                $land->idloai = $idloai;
+                $land->dientich = $dientich;
+                $land->gia = $gia;
+            }
 
             $d['category'] = $this->repoCate->getAll($category);
 
             $d['lands'] = $this->repoLand->findByKey($land);
 
-            if(!empty($thanhpho)){
-                $array = $this->reso->getAddress();
-                foreach ($array as $value) {
-                    if($value->id == $thanhpho){
-                       $d['namelands'] = $value->name;
-                    }
-                }
-            }
-            
+            $d['namelands'] = $this->reso->getAddress();
+                       
+            $this->set($d);
+            $this->render("search_land");
+        }
+
+         public function searchCity($id)
+        {
+             /*require(ROOT . 'Models/Task.php');*/
+            $category = new CategoryModel();
+            $land = new LandModel();
+            $d['name'] = "Tìm kiếm";
+
+            $d['category'] = $this->repoCate->getAll($category);
+
+            $d['lands'] = $this->repoLand->getAllByCategoryId($land,$id,'thanhpho');
+
+            $d['namelands'] = $this->reso->getAddress();
+                       
             $this->set($d);
             $this->render("search_land");
         }
