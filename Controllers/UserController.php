@@ -175,6 +175,111 @@
           $this->render("postLand");
           }
         }
+
+        public function lands($id){
+          $category = new CategoryModel();
+          $land = new LandModel();
+          $d['category'] = $this->repoCate->getAll($category);
+
+          $d['name'] = "Quản lý đất";
+          $d['namelands'] = $this->reso->getAddress();
+          $iduser = $_SESSION["id_user"];
+          if($id != $iduser) {
+            echo "<script  type='text/javascript'>alert('Bạn cần đăng nhập đúng tài khoản trước');</script>";
+          } 
+          $d['lands'] = $this->repoLan->getAllByCategoryId($land,$iduser,'iduser');
+
+          $this->set($d);
+          $this->render("user_lands");
+        }
+
+        public function deleteLand($id){
+            $land = new LandModel();
+            $iduser = $_SESSION["id_user"];
+            
+            $land->id = $id;
+
+            if ($this->repoLan->delete($land))
+            {
+                 header("Location: " . WEBROOT . "user/lands/$iduser");
+            }
+        }
+
+        public function edit($id){
+
+            $land = new LandModel();
+            $category = new CategoryModel();
+            extract($_POST);
+
+            $d['category'] = $this->repoCate->getAll($category);
+            $d['land'] = $this->repoLan->get($id);
+            $this->set($d);
+          $land = new LandModel();
+          if (isset($_POST['submitLand'])){
+            $land->id = $id;
+           $land->tendat = $tendat;
+           $land->thanhpho = $thanhpho;
+           $land->diadiem = $diadiem;
+           $land->toado = $toado;
+           $land->gia = $gia;
+           $land->dientich = $dientich;
+           $land->mota = $mota;
+           $land->thongtin = $thongtin;
+           $land->sdt = $sdt;
+           $land->nguoiban = $nguoiban;
+           $land->thoigian = date('Y-m-d H:i:s');
+           $land->hot = isset($_POST["hot"]) ? 1:0;
+           $land->loai = $loai;
+           $land->idloai = $idloai;
+           $land->hinhanh = $d['land']->hinhanh;
+           $land->iduser = $_SESSION["id_user"];
+           $filename = "";
+           $name = array();
+            $tmp_name = array();
+            $error = array();
+            $ext = array();
+            $size = array();
+           if($this->repoLan->update($land)){
+            foreach ($_FILES['file']['name'] as $file) {
+              $name[] = $file;
+            }
+            foreach ($_FILES['file']['tmp_name'] as $file) {
+              $tmp_name[] = $file;
+            }
+            foreach ($_FILES['file']['error'] as $file) {
+              $error[] = $file;
+            }
+          //Phần này lấy giá trị ra từng mảng nhỏ
+            for ($i = 0; $i < count($name); $i++) {
+              if ($error[$i] < 0) {
+                echo "Lỗi: " . $error[$i];
+              } else
+              {
+                $temp = preg_split('/[\/\\\\]+/', $name[$i]);
+                $filename = $temp[count($temp) - 1];
+                $upload_dir = ROOT."asset/products/$id/";
+                $upload_file = $upload_dir . $filename;
+                if (file_exists($upload_file)) {
+                  echo 'File đã tồn tại';
+                } 
+                else {
+                  if (move_uploaded_file($tmp_name[$i], $upload_file)) {
+
+                  } 
+                  else echo 'loi';
+                }
+              } //End khoi cau lenh up file va them vao CSDL;
+            } //End vong lap for cho tat ca cac file;
+              $filename = implode(',',$name);
+              if($filename!="") $this->reso->uploadAnh($filename,$id);
+            header("Location: " . WEBROOT . "detailland/index/$id");
+          }
+            else echo "Đã xảy ra lỗi !!!. <a href='".WEBROOT."user/createLand/'>Quay lại</a>";
+          }
+          
+          $this->render("postLand");
+        }
+
       }
 
 ?>

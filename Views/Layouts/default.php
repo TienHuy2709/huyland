@@ -61,7 +61,27 @@
 	</div>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="<?php echo WEBROOT; ?>home/index/">HUY<span>LAND</span></a>
+			<a class="navbar-brand" href="<?php echo WEBROOT; ?>home/index/"><span class="icon-home2" id="setcolor"></span></span>HUY<span id="setcolor">LAND</span></a>
+			<style type="text/css">
+				#setcolor {
+					color: green;
+					animation: colorBackground 0.5s infinite;
+					-webkit-animation: colorBackground 5s infinite;
+					-moz-animation: colorBackground 5s infinite;
+					-o-animation: colorBackground 0.5s infinite
+				}
+				@keyframes colorBackground {
+					0% {
+						color: green;
+					}
+					50% {
+						color: #84bc84;
+					}
+					100% {
+						color: #577657;
+					}
+				}
+			</style>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -107,7 +127,7 @@
 							<div class="row"> 
 								<div class="col-sm-12"> 
 									<ul class="multi-column-dropdown"> 
-										<li><a href="#">Quản lý mảnh đất</a></li>
+										<li><a href="<?php echo WEBROOT ?>user/lands/<?php echo $_SESSION['id_user']; ?>">Quản lý mảnh đất</a></li>
 										<li><a href="<?php echo WEBROOT ?>user/logout/" onclick="return window.confirm('Bạn có chắc chắn muốn đăng xuất');">Đăng xuất</a></li>
 									</ul> 
 							</div> 
@@ -342,9 +362,17 @@
 				function loadcity(){
                             $.ajax({
                             url : "<?php echo WEBROOT."getAddress/index"?>",
-                            type : "get",
+                            <?php if ($this->request->action == 'edit'):?>
+			                  type : "post",
+			                <?php else: ?>
+			                  type : "get",
+			                <?php endif; ?>
                             dataType : "text",
-                            data : {},
+                            data : {
+                            	<?php if ($this->request->action == 'edit'):?>
+                            		id: <?php echo $id_edit; ?>,
+                            	<?php endif; ?>
+                            },
                             success : function(resule){
                                 $("#thanhpho").html(resule);
                             //Load lại trang theo thời gian cho phép

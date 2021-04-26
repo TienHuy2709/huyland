@@ -9435,3 +9435,28 @@ overflow-x: hidden;
 }
 
 /*------------------------*/
+/* Custom style */
+.actionLands{
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.actionLands a{
+  padding: 10px 20px;
+  margin: 0px 5px;
+  line-height: 20px;
+  color: white;
+  border-radius: 5px;
+
+}
+.actionLands a:hover {
+  text-decoration: underline;
+}
+a.delete {
+  background-color: red;
+}
+a.edit {
+  background-color: #34c0e7;
+}
+/* end */

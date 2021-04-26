@@ -1,5 +1,10 @@
 <div class="container">
-        <h1>Đăng tin bán đất</h1>
+    <?php if(!empty($land->id)){
+        $id_edit = $land->thanhpho;
+        echo "<h1>Sửa thông tin đất</h1>";
+    }
+    else echo "<h1>Đăng tin bán đất</h1>";
+    ?>
                     </div>    
                     <div class="col-md-12">  
                         <div class="panel panel-primary">
@@ -11,7 +16,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Tiêu đề cho bài đăng</div>
                                     <div class="col-md-10">
-                                        <input type="text" value="" name="tendat" class="form-control" required>
+                                        <input type="text" value="<?php if(isset($land->tendat)) echo $land->tendat; ?>" name="tendat" class="form-control" required>
                                     </div>
                                 </div>
                                 <!-- end rows -->
@@ -22,7 +27,11 @@
                                         <select name="idloai" required class="form-control " style="width: 300px; height: 200px" placeholder="Pick a state...">
                                           <option></option>
                                           <?php foreach ($category as $cate): ?>
-                                          <option value="<?php echo ucfirst($cate->id); ?>"><?php echo ucfirst($cate->tenloai); ?></option>
+                                            <?php if(isset($land->idloai) && $land->idloai == $cate->id): ?>
+                                              <option selected="" value="<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></option>
+                                              <?php else: ?>
+                                                <option value="<?php echo $cate->id; ?>"><?php echo ucfirst($cate->tenloai); ?></option>
+                                            <?php endif; ?>
                                           <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -34,9 +43,8 @@
                                     <div class="col-md-10">
                                         <select name="loai" class="form-control" style="width: 300px; height: 200px">
                                           <option></option>
-                                            <option value="0">Đất thuê</option>
-                                            <option value="1">Đất bán</option>
-                                      
+                                            <option <?php if(isset($land->loai) && $land->loai==0) echo "selected"; ?> value="0">Đất thuê</option>
+                                            <option <?php if(isset($land->loai) && $land->loai==1) echo "selected"; ?> value="1">Đất bán</option>
                                         </select>
                                     </div>
                                 </div>
@@ -62,7 +70,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Địa chỉ</div>
                                     <div class="col-md-10">
-                                        <input type="text" required value="" name="diadiem" id="diadiem" class="form-control" required>
+                                         <input type="text" required value="<?php if(isset($land->diadiem)) echo $land->diadiem; ?>" id="diadiem" name="diadiem" class="form-control" required>
                                     </div>
                                 </div>
                                 <input type="text" value="" name="toado" id="toado" style="display: none" >
@@ -70,7 +78,7 @@
                                  <div class="row" style="margin-top:5px;">
                                   <div class="col-md-2">Giá bán</div>
                                     <div class="col-md-10">
-                                      <input class="btn-sm input-group-sm" required type="text" value=""name="gia" id="gia">
+                                       <input class="btn-sm input-group-sm" required type="text" value="<?php if(isset($land->gia)) echo $land->gia; ?>"name="gia" id="gia">
                                     </div>
                                   </div>
                                 <!-- rows -->
@@ -78,7 +86,7 @@
                                  <div class="row" style="margin-top:5px;">
                                   <div class="col-md-2">Diện tích(m<sup>2</sup>)</div>
                                     <div class="col-md-10">
-                                      <input class="btn-sm input-group-sm" required type="text" value="" name="dientich" id="gia">
+                                       <input class="btn-sm input-group-sm" required type="text" value="<?php if(isset($land->dientich)) echo $land->dientich; ?>" name="dientich" id="gia">
                                     </div>
                                   </div>
                                 <!-- rows -->
@@ -86,6 +94,7 @@
                                     <div class="col-md-2">Mô tả</div>
                                     <div class="col-md-10">
                                         <textarea name="mota" required id="mota">
+                                            <?php if(isset($land->mota)) echo $land->mota; ?>
                                         </textarea>
                                         <script type="text/javascript">
                                             CKEDITOR.replace("mota");
@@ -98,6 +107,7 @@
                                     <div class="col-md-2">Thông tin chi tiết</div>
                                     <div class="col-md-10">
                                         <textarea name="thongtin" required id="thongtin">
+                                            <?php if(isset($land->thongtin)) echo $land->thongtin; ?>
                                         </textarea>
                                         <script type="text/javascript">
                                             CKEDITOR.replace("thongtin");
@@ -110,6 +120,7 @@
                                     <div class="col-md-2">Thông tin người bán</div>
                                     <div class="col-md-10">
                                         <textarea name="nguoiban" required id="nguoiban">
+                                            <?php if(isset($land->nguoiban)) echo $land->nguoiban; ?>
                                         </textarea>
                                         <script type="text/javascript">
                                             CKEDITOR.replace("nguoiban");
@@ -121,7 +132,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2">Số điện thoại liên hệ</div>
                                     <div class="col-md-10">
-                                        <input type="text" name="sdt" required style="width: 300px;height: 50px">
+                                        <input type="text" value="<?php if(isset($land->sdt)) echo $land->sdt; ?>" name="sdt" required style="width: 300px;height: 50px">
                                     </div>
                                 </div>
                                 <!-- end rows -->
@@ -129,7 +140,7 @@
                                 <div class="row" style="margin-top:5px;">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-10">
-                                        <input type="checkbox" name="hot" id="hot"><label for="hot">Hot Land</label>
+                                        <input type="checkbox" <?php if(isset($land->hot) and $land->hot==1) echo "checked"; ?> name="hot" id="hot"><label for="hot">Hot Land</label>
                                     </div>
                                 </div>
                                 <!-- end rows -->
@@ -147,7 +158,7 @@
                                 <div class="row" style="margin:10px;">
                                     <div class="col-md-2"></div>
                                     <div class="col-md-10">
-                                        <input type="submit" name="submitLand" value="Đăng tin" class="btn btn-warning">
+                                        <input type="submit" name="submitLand" value="<?php if(isset($land->id)) echo "Lưu"; else echo "Thêm mới"; ?>" class="btn btn-warning">
                                     </div>
                                 </div>
                                 <!-- end rows -->

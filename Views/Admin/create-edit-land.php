@@ -1,6 +1,11 @@
 <div class="container">
-    <?php if(!empty($land->id)) $id_edit = $land->thanhpho;?>
-        <h1>Đăng tin bán đất</h1>
+    <?php if(!empty($land->id)){
+        $id_edit = $land->thanhpho;
+        echo "<h1>Sửa thông tin đất</h1>";
+    }
+    else echo "<h1>Đăng tin bán đất</h1>";
+    ?>
+        
                     </div>    
                     <div class="col-md-12">  
                         <div class="panel panel-primary">
@@ -41,7 +46,6 @@
                                           <option></option>
                                             <option <?php if(isset($land->loai) && $land->loai==0) echo "selected"; ?> value="0">Đất thuê</option>
                                             <option <?php if(isset($land->loai) && $land->loai==1) echo "selected"; ?> value="1">Đất bán</option>
-                                      
                                         </select>
                                     </div>
                                 </div>

@@ -26,7 +26,36 @@
                   echo "title='Yêu thích'" ;
                   echo "data-id_delete=$detail->id";
                 } ?> ></button>
+                <?php if(isset($_SESSION["id_user"]) && $_SESSION["id_user"]==$detail->iduser): ?>
+                 <div class="actionLands">
+                   <a class="edit" href="<?php echo WEBROOT ?>user/edit/<?php echo $detail->id; ?>">Sửa</a>
+                 <a class="delete" href="<?php echo WEBROOT ?>user/deleteLand/<?php echo $detail->id; ?>" onclick="return window.confirm('Bạn có chắc chắn muốn đăng xuất');">Xoá</a>
+                 </div>
+               <?php endif; ?>
+               <style type="text/css">
+                    .actionLands{
+                        margin-top: 15px;
+                        width: 100%;
+                        height: auto;
+                    }
+                    .actionLands a{
+                        padding: 10px 20px;
+                        margin: 0 5px;
+                        line-height: 20px;
+                        color: white;
+                        border-radius: 5px;
 
+                    }
+                    .actionLands a:hover {
+                        text-decoration: underline;
+                    }
+                    a.delete {
+                        background-color: red;
+                    }
+                     a.edit {
+                        background-color: #34c0e7;
+                    }
+                </style>
               </div>
 
               <div class="col-md-12 Properties-single mt-4 mb-5 ftco-animate">
